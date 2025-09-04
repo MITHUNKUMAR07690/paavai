@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Box</title>
+  <style>
+    :root{ --bg:#f3f6fb; --card:#ffffff; --accent:#2563eb; --muted:#6b7280; --danger:#ef4444 }
+    *{box-sizing:border-box}
+    body{margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#eef2ff 0%, var(--bg) 100%); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+    .card{width:380px; max-width:94%; background:var(--card); border-radius:14px; box-shadow:0 10px 30px rgba(16,24,40,0.08); padding:28px}
+    h1{font-size:18px; margin:0 0 6px; text-align:center}
+    p.lead{margin:0 0 18px; text-align:center; color:var(--muted); font-size:13px}
+
+    .socials{display:flex; gap:10px; margin-bottom:14px}
+    .btn{flex:1; display:inline-flex; align-items:center; gap:10px; justify-content:center; padding:10px 12px; border-radius:10px; cursor:pointer; border:1px solid rgba(15,23,42,0.05); font-weight:600; font-size:13px; background:#fff}
+    .btn svg{width:18px; height:18px}
+    .btn.google{border-color:rgba(34,34,34,0.08)}
+    .btn.apple{border-color:rgba(34,34,34,0.06)}
+
+    .or{display:flex; align-items:center; gap:10px; margin:12px 0; color:var(--muted); font-size:13px}
+    .or hr{flex:1; border:none; height:1px; background:#eef2f5}
+
+    form{display:grid; gap:12px}
+    label{font-size:13px; color:var(--muted)}
+    input[type=text], input[type=email], input[type=password]{width:100%; padding:12px 14px; border-radius:10px; border:1px solid #e6eef8; outline:none; font-size:14px; background:#fafcff}
+    input:focus{box-shadow:0 0 0 4px rgba(37,99,235,0.06); border-color:var(--accent)}
+    .row{display:flex; align-items:center; justify-content:space-between}
+    .small{font-size:13px; color:var(--muted)}
+    .actions{display:flex; gap:10px; margin-top:6px}
+    .primary{flex:1; background:var(--accent); color:white; border:none; padding:12px 14px; border-radius:10px; font-weight:700; cursor:pointer}
+    .secondary{background:transparent; border:1px dashed #dbeafe; padding:10px 12px; border-radius:10px; cursor:pointer}
+    .error{color:var(--danger); font-size:13px}
+    .footer{margin-top:14px; text-align:center; font-size:13px; color:var(--muted)}
+
+    @media (max-width:420px){ .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <h1>Sign in to your account</h1>
+    <p class="lead">Use your Google, Apple account or email to sign in.</p>
+
+    <div class="socials">
+      <button class="btn google" id="btnGoogle" type="button" aria-label="Sign in with Google">
+        <!-- Google SVG -->
+        <svg viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#4285f4" d="M533.5 278.4c0-18.5-1.6-36.2-4.6-53.4H272.1v101.1h147.1c-6.3 34-25.7 62.8-54.8 82v68.1h88.6c51.8-47.8 81.8-118 81.8-197.8z"/><path fill="#34a853" d="M272.1 544.3c73.9 0 135.9-24.5 181.2-66.7l-88.6-68.1c-25.9 17.5-59 27.9-92.6 27.9-71 0-131-47.9-152.3-112.1H30.4v70.7C75 484.3 167.4 544.3 272.1 544.3z"/><path fill="#fbbc04" d="M119.8 323.3c-5.8-17.5-9.1-36.2-9.1-55.3s3.3-37.8 9.1-55.3V142H30.4C10.8 181.6 0 222.9 0 268s10.8 86.4 30.4 126L119.8 323.3z"/><path fill="#ea4335" d="M272.1 107.7c39.9 0 75.7 13.7 104 40.6l78-78C405.8 24.9 343.8 0 272.1 0 167.4 0 75 60 30.4 142l89.4 70.7C141.1 155.6 201.1 107.7 272.1 107.7z"/></svg>
+        <span>Google</span>
+      </button>
+      <button class="btn apple" id="btnApple" type="button" aria-label="Sign in with Apple">
+        <!-- Apple SVG -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.365 1.43c.15 1.64-.57 3.36-1.57 4.52-1.03 1.2-2.62 2.12-3.97 1.9-.17-1.54.5-3.17 1.46-4.19 1-1.08 2.59-1.96 4.08-2.23zM12.3 6.89c1.85 0 3.99.99 5.22 2.66 1.14 1.55 1.32 3.72.48 5.56-.8 1.87-2.66 3.53-4.84 3.53-1.02 0-1.34-.63-2.5-.63-1.17 0-1.6.64-2.58.64-2.25 0-4.1-1.97-5.22-3.93-1.85-3.03-1.08-8.5 1.14-11.46 1.02-1.28 2.56-2.1 4.12-2.1 1.08 0 2.14.54 2.84.54.7 0 1.86-.68 3.27-.68z" fill="#111"/></svg>
+        <span>Apple</span>
+      </button>
+    </div>
+
+    <div class="or"><hr><div>or</div><hr></div>
+
+    <form id="loginForm" novalidate>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        <div id="emailError" class="error" aria-live="polite" style="display:none"></div>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" minlength="6" required />
+        <div id="pwdError" class="error" aria-live="polite" style="display:none"></div>
+      </div>
+
+      <div class="row">
+        <label class="small"><input id="remember" type="checkbox" style="margin-right:8px">Remember me</label>
+        <a href="#" class="small">Forgot?</a>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="secondary" id="demoBtn">Demo</button>
+        <button type="submit" class="primary">Log in</button>
+      </div>
+    </form>
+
+    <div class="footer">Don't have an account? <a href="#">Sign up</a></div>
+  </div>
+
+  <script>
+    // Basic client-side validation + demo stubs for social sign-in
+    const form = document.getElementById('loginForm');
+    const emailField = document.getElementById('email');
+    const pwdField = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const pwdError = document.getElementById('pwdError');
+
+    function validateEmail(v){ return /\S+@\S+\.\S+/.test(v); }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      let ok = true;
+      emailError.style.display='none'; pwdError.style.display='none';
+
+      if(!validateEmail(emailField.value.trim())){ emailError.textContent='Please enter a valid email.'; emailError.style.display='block'; ok=false }
+      if(pwdField.value.trim().length < 6){ pwdError.textContent='Password must be at least 6 characters.'; pwdError.style.display='block'; ok=false }
+
+      if(!ok) return;
+
+      // --- IMPORTANT ---
+      // This example does NOT perform a real authentication.
+      // Replace the block below with your server-side login (POST to your API) or integrate OAuth.
+      alert('Form validated. Replace this with a real login call to your backend.');
+    });
+
+    document.getElementById('demoBtn').addEventListener('click', ()=>{
+      emailField.value='demo@example.com'; pwdField.value='demopass';
+    });
+
+    document.getElementById('btnGoogle').addEventListener('click', ()=>{
+      alert('This is a mock Google sign-in button. Implement real OAuth on your server.');
+    });
+
+    document.getElementById('btnApple').addEventListener('click', ()=>{
+      alert('This is a mock Apple sign-in button. Implement Sign in with Apple on your server.');
+    });
+  </script>
+</body>
+</html>
